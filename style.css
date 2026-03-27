@@ -177,6 +177,86 @@ body {
 
 
 
+/*=============================
+  HERO SECTION
+=============================*/
+.hero {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('./assets/img/cv/cv2.png') center/contain no-repeat;
+  filter: drop-shadow(1px 2px 10px #00fffb);
+  transition: transform 0.4s ease-out;
+}
+
+.hero-content {
+  z-index: 1;
+  padding: 0 2rem;
+}
+
+.hero-content p {
+  margin-top: 1rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 20px #00fffb, 0 0 40px #0081bc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -562,9 +642,16 @@ body {
 
 .title {
   text-align: center;
-  font-size: 28px;
+  font-size: 40px;
   font-family: 'Times New Roman', serif;
   text-shadow: 0 0 5px #00fffb, 0 0 10px #0081bc;
+}
+
+.paragraph {
+  font-size: clamp(1.3rem, .5vw, 1rem);
+        margin-bottom: 1rem;
+        color: #ffffff;
+        text-shadow: 0 0 5px #00fffb, 0 0 10px #0081bc;
 }
 
 .elki {
