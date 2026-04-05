@@ -2641,6 +2641,9 @@ h5 {
   color: inherit;
   position: relative;
   transition: color 0.3s;
+
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .footer-distributed .footer-links a::after {
@@ -3429,9 +3432,11 @@ a {
     background-color: transparent; 
     -webkit-transition: opacity 0.4s; 
     transition: opacity 0.4s; 
-    color: #111; 
-    font-weight: 500; 
+    color: #8b8787; 
+    font-weight: 800; 
     text-decoration: none;
+
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 } 
 
 .nav-link-s1q.footer-sfp { 
