@@ -284,7 +284,7 @@ body {
 
 .ul-faq-sub {
   margin-top: .5rem;
-  color: #aab3c5;
+  color: #ffffff;
 }
 
 .ul-faq-list {
@@ -317,6 +317,7 @@ body {
   list-style: none;
   position: relative;
   padding-right: 2rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .ul-faq-item summary::-webkit-details-marker {
@@ -340,9 +341,11 @@ body {
 
 .ul-faq-item p {
   margin-top: .9rem;
-  font-size: .95rem;
-  color: #d2dbec;
+  font-size: 1rem;
+  color: #ffffff;
   line-height: 1.6;
+
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 /* Mobile tweaks */
@@ -395,7 +398,7 @@ body {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(0,255,251,0.25);
   border-radius: 18px;
-  padding: 2.5rem 2rem;
+  padding: 2rem 2rem;
   backdrop-filter: blur(14px);
   box-shadow: 0 0 30px rgba(0,255,251,.15);
   transition: transform .4s ease, box-shadow .4s ease;
@@ -426,6 +429,8 @@ body {
   font-size: .95rem;
   color: #cfd7e6;
   margin: 1rem 0;
+
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .ul-card ul {
@@ -436,7 +441,8 @@ body {
 
 .ul-card ul li {
   margin: .6rem 0;
-  font-size: .95rem;
+  font-size: 1rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .ul-btn {
@@ -459,7 +465,7 @@ body {
 
 /* Featured card */
 .ul-card.featured {
-  border: 2px solid #00fffb;
+  border: 1px solid #00fffb;
   transform: scale(1.05);
 }
 
@@ -469,11 +475,12 @@ body {
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, #ffcc00, #ff6b00);
-  color: #000;
-  padding: .3rem .9rem;
-  font-size: .75rem;
+  color: #ffffff;
+  padding: .2rem .9rem;
+  font-size: 1rem;
   border-radius: 99px;
   font-weight: 700;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 
