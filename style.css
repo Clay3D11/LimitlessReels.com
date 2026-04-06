@@ -687,7 +687,7 @@ body {
 =============================*/
 .shadow__btn {
   margin: auto;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
   font-size: 17px;
   color: #fff;
@@ -3100,7 +3100,7 @@ html {
 .section-izr.footer-3mi { 
     padding-top: 4em; 
     padding-bottom: 4em; 
-    background-color: #000;
+    background-color: #111111f3;
 } 
 
 .container-hgo { 
