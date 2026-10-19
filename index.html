@@ -26,7 +26,7 @@
       </a>
       <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false" data-nav-toggle><span></span><span></span></button>
       <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation" data-nav>
-        <a href="#work">Our work</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#difference">Why us</a><a href="#process">Process</a><a href="#faq">FAQ</a>
+        <a href="#top">Home</a><a href="#work">Our work</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#difference">Why us</a><a href="#process">Process</a><a href="#faq">FAQ</a>
       </nav>
       <div class="nav-actions">
         <button class="project-cart-button" type="button" data-cart-open>Project cart <span data-cart-count>0</span></button>
@@ -63,24 +63,6 @@
           <p>Buyers rarely remember specifications alone. They remember how a home made them feel. Limitless Reels combines intentional movement, cinematic editing, aerial perspective, music, and story to turn every listing into an experience worth stopping for.</p>
           <div class="intro-stats"><div><strong>4K</strong><span>cinematic delivery</span></div><div><strong>48hr</strong><span>standard turnaround</span></div><div><strong>9:16</strong><span>social-first formats</span></div></div>
         </div>
-      </div>
-    </section>
-
-    <section class="work section" id="work">
-      <div class="shell">
-        <div class="section-head reveal"><div><span class="eyebrow">Selected property films</span><h2>Made to be <em>felt.</em></h2></div><p>From neighborhood context to the quiet details inside a room, every sequence is designed to build desire and communicate value.</p></div>
-        <div class="film-grid">
-          <article class="film-card film-wide reveal" data-video="assets/videos/property-1.mp4" data-title="Modern Living — Property Film">
-            <img src="assets/images/property-1.jpg" alt="Modern residential property exterior" loading="lazy"><div class="film-shade"></div><div class="film-info"><span>Property film · Exterior</span><h3>Modern Living</h3></div><button class="play-button" type="button" aria-label="Play Modern Living property film" data-play>▶</button>
-          </article>
-          <article class="film-card reveal" data-video="assets/videos/property-2.mp4" data-title="Coastal Perspective — Aerial Film">
-            <img src="assets/images/property-2.jpg" alt="Aerial view of a coastal neighborhood and marina" loading="lazy"><div class="film-shade"></div><div class="film-info"><span>Drone · Neighborhood</span><h3>Coastal Perspective</h3></div><button class="play-button" type="button" aria-label="Play Coastal Perspective aerial film" data-play>▶</button>
-          </article>
-          <article class="film-card reveal" data-video="assets/videos/property-4.mp4" data-title="Quiet Luxury — Interior Story">
-            <img src="assets/images/property-4.jpg" alt="Luxury modern living room with fireplace and panoramic windows" loading="lazy"><div class="film-shade"></div><div class="film-info"><span>Interior · Luxury</span><h3>Quiet Luxury</h3></div><button class="play-button" type="button" aria-label="Play Quiet Luxury interior film" data-play>▶</button>
-          </article>
-        </div>
-        <div class="work-footer reveal"><p>Have footage already?</p><button class="text-link" type="button" data-add-direct data-item-id="editing-only" data-item-name="Professional Editing" data-item-type="Service">Send it to our editing suite <span>↗</span></button></div>
       </div>
     </section>
 
@@ -157,6 +139,27 @@
 
   <dialog class="video-modal" data-video-modal><button class="video-close" type="button" aria-label="Close video" data-video-close>×</button><video controls playsinline data-modal-video></video><div><span>NOW PLAYING</span><strong data-video-title></strong></div></dialog>
   <dialog class="legal-modal" data-legal-modal><button class="modal-close" type="button" aria-label="Close" data-legal-close>×</button><div data-legal-content></div></dialog>
+
+  <!-- Work Section -->
+  <dialog class="section-modal" id="work" aria-label="Our work"><button class="modal-close" type="button" aria-label="Close our work" data-section-close>×</button>
+    <section class="work section">
+      <div class="shell">
+        <div class="section-head reveal"><div><span class="eyebrow">Selected property films</span><h2>Made to be <em>felt.</em></h2></div><p>From neighborhood context to the quiet details inside a room, every sequence is designed to build desire and communicate value.</p></div>
+        <div class="film-grid">
+          <article class="film-card film-wide reveal" data-video="assets/videos/property-1.mp4" data-title="Modern Living — Property Film">
+            <img src="assets/images/property-1.jpg" alt="Modern residential property exterior" loading="lazy"><div class="film-shade"></div><div class="film-info"><span>Property film · Exterior</span><h3>Modern Living</h3></div><button class="play-button" type="button" aria-label="Play Modern Living property film" data-play>▶</button>
+          </article>
+          <article class="film-card reveal" data-video="assets/videos/property-2.mp4" data-title="Coastal Perspective — Aerial Film">
+            <img src="assets/images/property-2.jpg" alt="Aerial view of a coastal neighborhood and marina" loading="lazy"><div class="film-shade"></div><div class="film-info"><span>Drone · Neighborhood</span><h3>Coastal Perspective</h3></div><button class="play-button" type="button" aria-label="Play Coastal Perspective aerial film" data-play>▶</button>
+          </article>
+          <article class="film-card reveal" data-video="assets/videos/property-4.mp4" data-title="Quiet Luxury — Interior Story">
+            <img src="assets/images/property-4.jpg" alt="Luxury modern living room with fireplace and panoramic windows" loading="lazy"><div class="film-shade"></div><div class="film-info"><span>Interior · Luxury</span><h3>Quiet Luxury</h3></div><button class="play-button" type="button" aria-label="Play Quiet Luxury interior film" data-play>▶</button>
+          </article>
+        </div>
+        <div class="work-footer reveal"><p>Have footage already?</p><button class="text-link" type="button" data-add-direct data-item-id="editing-only" data-item-name="Professional Editing" data-item-type="Service">Send it to our editing suite <span>↗</span></button></div>
+      </div>
+    </section>
+  </dialog>
 
   <!-- Service Section -->
   <dialog class="section-modal" id="services" aria-label="Services"><button class="modal-close" type="button" aria-label="Close services" data-section-close>×</button>

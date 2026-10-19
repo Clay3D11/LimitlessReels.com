@@ -67,7 +67,7 @@ bookingForm.addEventListener('submit',event=>{event.preventDefault();const field
 bookingModal.addEventListener('close',()=>{setLocked(false);setTimeout(()=>{bookingForm.reset();bookingForm.hidden=false;bookingModal.querySelector('.booking-intro').hidden=false;bookingSuccess.hidden=true;bookingForm.querySelectorAll('[aria-invalid]').forEach(field=>field.removeAttribute('aria-invalid'))},180)});
 
 document.querySelectorAll('[data-play]').forEach(button=>button.addEventListener('click',()=>{const card=button.closest('[data-video]');lastFocus=button;modalVideo.src=card.dataset.video;videoModal.querySelector('[data-video-title]').textContent=card.dataset.title;videoModal.showModal();setLocked(true);modalVideo.play().catch(()=>{})}));
-function closeVideo(){modalVideo.pause();modalVideo.removeAttribute('src');modalVideo.load();videoModal.close();setLocked(false);lastFocus?.focus()}
+function closeVideo(){modalVideo.pause();modalVideo.removeAttribute('src');modalVideo.load();videoModal.close();setLocked(!!document.querySelector('.section-modal[open]'));lastFocus?.focus()}
 document.querySelector('[data-video-close]').addEventListener('click',closeVideo);videoModal.addEventListener('click',({target})=>{if(target===videoModal)closeVideo()});videoModal.addEventListener('cancel',event=>{event.preventDefault();closeVideo()});
 
 /* Services & pricing pop-ups open from any link to their id */
