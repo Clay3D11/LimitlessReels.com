@@ -53,7 +53,7 @@ function renderProject(){const quantityTotal=project.reduce((sum,item)=>sum+(Num
   document.querySelectorAll('[data-item-id]').forEach(element=>{const added=project.some(item=>item.id===element.dataset.itemId);const button=element.querySelector('[data-add]');if(button){button.classList.toggle('added',added);button.textContent=added?'Added ✓':'Add to project'}if(element.matches('button[data-add-direct]'))element.classList.toggle('added',added)})}
 cartContent.addEventListener('click',({target})=>{const button=target.closest('[data-remove]');if(!button)return;project=project.filter(item=>item.lineId!==button.dataset.remove);saveProject();renderProject()});
 
-function openCart(){lastFocus=document.activeElement;cartDrawer.classList.add('open');cartDrawer.setAttribute('aria-hidden','false');setLocked(true);requestAnimationFrame(()=>cartDrawer.querySelector('[data-cart-close]').focus())}
+function openCart(){document.querySelectorAll('.section-modal[open]').forEach(modal=>modal.close());lastFocus=document.activeElement;cartDrawer.classList.add('open');cartDrawer.setAttribute('aria-hidden','false');setLocked(true);requestAnimationFrame(()=>cartDrawer.querySelector('[data-cart-close]').focus())}
 function closeCart(){cartDrawer.classList.remove('open');cartDrawer.setAttribute('aria-hidden','true');setLocked(false);lastFocus?.focus()}
 document.querySelectorAll('[data-cart-open]').forEach(button=>button.addEventListener('click',openCart));
 document.querySelectorAll('[data-cart-close]').forEach(button=>button.addEventListener('click',closeCart));
@@ -69,6 +69,9 @@ bookingModal.addEventListener('close',()=>{setLocked(false);setTimeout(()=>{book
 document.querySelectorAll('[data-play]').forEach(button=>button.addEventListener('click',()=>{const card=button.closest('[data-video]');lastFocus=button;modalVideo.src=card.dataset.video;videoModal.querySelector('[data-video-title]').textContent=card.dataset.title;videoModal.showModal();setLocked(true);modalVideo.play().catch(()=>{})}));
 function closeVideo(){modalVideo.pause();modalVideo.removeAttribute('src');modalVideo.load();videoModal.close();setLocked(false);lastFocus?.focus()}
 document.querySelector('[data-video-close]').addEventListener('click',closeVideo);videoModal.addEventListener('click',({target})=>{if(target===videoModal)closeVideo()});videoModal.addEventListener('cancel',event=>{event.preventDefault();closeVideo()});
+
+/* Services & pricing pop-ups open from any link to their id */
+document.querySelectorAll('.section-modal').forEach(modal=>{document.querySelectorAll(`a[href="#${modal.id}"]`).forEach(link=>link.addEventListener('click',event=>{event.preventDefault();lastFocus=link;setMenu(false);modal.showModal();setLocked(true)}));modal.addEventListener('click',({target})=>{if(target===modal||target.closest('[data-section-close]'))modal.close()});modal.addEventListener('close',()=>{if(!cartDrawer.classList.contains('open'))setLocked(false)})});
 
 document.querySelectorAll('.faq-item>button').forEach(button=>button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));button.nextElementSibling.hidden=open}));
 
