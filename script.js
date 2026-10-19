@@ -24,6 +24,7 @@ const money=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maxim
 function readProject(){try{const value=JSON.parse(localStorage.getItem('limitless-reels-project'));return Array.isArray(value)?value.map(item=>({...item,lineId:item.lineId||item.id,quantity:Number(item.quantity)||1})):[]}catch{return[]}}
 function saveProject(){localStorage.setItem('limitless-reels-project',JSON.stringify(project))}
 function setLocked(locked){body.classList.toggle('locked',locked)}
+function releaseLock(){setLocked(!!document.querySelector('.section-modal[open]'))} // stay locked while a section pop-up is still open
 function escapeHtml(value){return String(value).replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]))}
 
 function setMenu(open){header.classList.toggle('menu-open',open);navToggle.setAttribute('aria-expanded',String(open));navToggle.setAttribute('aria-label',open?'Close menu':'Open menu')}
@@ -59,18 +60,18 @@ document.querySelectorAll('[data-cart-open]').forEach(button=>button.addEventLis
 document.querySelectorAll('[data-cart-close]').forEach(button=>button.addEventListener('click',closeCart));
 
 function openBooking(){if(cartDrawer.classList.contains('open'))closeCart();lastFocus=document.activeElement;bookingForm.querySelector('[data-selected-items]').value=project.map(item=>`${item.type}: ${item.name}${item.option?` (${item.option})`:''} × ${item.quantity||1}${item.price?` — ${money.format(item.price*(item.quantity||1))}`:''}`).join(' | ');bookingModal.showModal();setLocked(true);requestAnimationFrame(()=>bookingForm.elements.firstName.focus())}
-function closeBooking(){bookingModal.close();setLocked(false);lastFocus?.focus()}
+function closeBooking(){bookingModal.close();releaseLock();lastFocus?.focus()}
 document.querySelectorAll('[data-book]').forEach(button=>button.addEventListener('click',openBooking));cartBook.addEventListener('click',openBooking);document.querySelectorAll('[data-book-close]').forEach(button=>button.addEventListener('click',closeBooking));
 bookingModal.addEventListener('click',({target})=>{if(target===bookingModal)closeBooking()});bookingModal.addEventListener('cancel',event=>{event.preventDefault();closeBooking()});
 const shootDate=document.querySelector('[data-shoot-date]');const tomorrow=new Date();tomorrow.setDate(tomorrow.getDate()+1);shootDate.min=tomorrow.toISOString().split('T')[0];
 bookingForm.addEventListener('submit',event=>{event.preventDefault();const fields=[...bookingForm.querySelectorAll('input,select,textarea')].filter(field=>field.type!=='hidden');fields.forEach(field=>field.setAttribute('aria-invalid',String(!field.checkValidity())));const invalid=fields.find(field=>!field.checkValidity());if(invalid){invalid.focus();showToast('Please complete the required project details.');return}const submission=Object.fromEntries(new FormData(bookingForm));localStorage.setItem('limitless-reels-latest-request',JSON.stringify({...submission,submittedAt:new Date().toISOString()}));bookingForm.hidden=true;bookingModal.querySelector('.booking-intro').hidden=true;bookingSuccess.hidden=false;project=[];saveProject();renderProject()});
-bookingModal.addEventListener('close',()=>{setLocked(false);setTimeout(()=>{bookingForm.reset();bookingForm.hidden=false;bookingModal.querySelector('.booking-intro').hidden=false;bookingSuccess.hidden=true;bookingForm.querySelectorAll('[aria-invalid]').forEach(field=>field.removeAttribute('aria-invalid'))},180)});
+bookingModal.addEventListener('close',()=>{releaseLock();setTimeout(()=>{bookingForm.reset();bookingForm.hidden=false;bookingModal.querySelector('.booking-intro').hidden=false;bookingSuccess.hidden=true;bookingForm.querySelectorAll('[aria-invalid]').forEach(field=>field.removeAttribute('aria-invalid'))},180)});
 
 document.querySelectorAll('[data-play]').forEach(button=>button.addEventListener('click',()=>{const card=button.closest('[data-video]');lastFocus=button;modalVideo.src=card.dataset.video;videoModal.querySelector('[data-video-title]').textContent=card.dataset.title;videoModal.showModal();setLocked(true);modalVideo.play().catch(()=>{})}));
-function closeVideo(){modalVideo.pause();modalVideo.removeAttribute('src');modalVideo.load();videoModal.close();setLocked(!!document.querySelector('.section-modal[open]'));lastFocus?.focus()}
+function closeVideo(){modalVideo.pause();modalVideo.removeAttribute('src');modalVideo.load();videoModal.close();releaseLock();lastFocus?.focus()}
 document.querySelector('[data-video-close]').addEventListener('click',closeVideo);videoModal.addEventListener('click',({target})=>{if(target===videoModal)closeVideo()});videoModal.addEventListener('cancel',event=>{event.preventDefault();closeVideo()});
 
-/* Services & pricing pop-ups open from any link to their id */
+/* Work, services, pricing & FAQ pop-ups open from any link to their id */
 document.querySelectorAll('.section-modal').forEach(modal=>{document.querySelectorAll(`a[href="#${modal.id}"]`).forEach(link=>link.addEventListener('click',event=>{event.preventDefault();lastFocus=link;setMenu(false);modal.showModal();setLocked(true)}));modal.addEventListener('click',({target})=>{if(target===modal||target.closest('[data-section-close]'))modal.close()});modal.addEventListener('close',()=>{if(!cartDrawer.classList.contains('open'))setLocked(false)})});
 
 document.querySelectorAll('.faq-item>button').forEach(button=>button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));button.nextElementSibling.hidden=open}));
