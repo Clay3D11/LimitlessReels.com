@@ -31,6 +31,8 @@ function setMenu(open){header.classList.toggle('menu-open',open);navToggle.setAt
 navToggle.addEventListener('click',()=>setMenu(navToggle.getAttribute('aria-expanded')!=='true'));
 nav.addEventListener('click',({target})=>{if(target.closest('a'))setMenu(false)});
 document.addEventListener('click',({target})=>{if(header.classList.contains('menu-open')&&!header.contains(target))setMenu(false)});
+/* Company dropdown closes after picking a link, clicking elsewhere, or Escape */
+const navDrop=document.querySelector('.nav-drop');document.addEventListener('click',({target})=>{if(!navDrop.contains(target)||target.closest('a'))navDrop.open=false});document.addEventListener('keydown',({key})=>{if(key==='Escape')navDrop.open=false});
 const updateHeader=()=>header.classList.toggle('scrolled',scrollY>25);updateHeader();addEventListener('scroll',updateHeader,{passive:true});
 
 const revealObserver=new IntersectionObserver((entries,observer)=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1,rootMargin:'0px 0px -35px'});
@@ -71,7 +73,7 @@ document.querySelectorAll('[data-play]').forEach(button=>button.addEventListener
 function closeVideo(){modalVideo.pause();modalVideo.removeAttribute('src');modalVideo.load();videoModal.close();releaseLock();lastFocus?.focus()}
 document.querySelector('[data-video-close]').addEventListener('click',closeVideo);videoModal.addEventListener('click',({target})=>{if(target===videoModal)closeVideo()});videoModal.addEventListener('cancel',event=>{event.preventDefault();closeVideo()});
 
-/* Work, services, pricing & FAQ pop-ups open from any link to their id */
+/* Work, services, pricing, realtors & FAQ pop-ups open from any link to their id */
 document.querySelectorAll('.section-modal').forEach(modal=>{document.querySelectorAll(`a[href="#${modal.id}"]`).forEach(link=>link.addEventListener('click',event=>{event.preventDefault();lastFocus=link;setMenu(false);modal.showModal();setLocked(true)}));modal.addEventListener('click',({target})=>{if(target===modal||target.closest('[data-section-close]'))modal.close()});modal.addEventListener('close',()=>{if(!cartDrawer.classList.contains('open'))setLocked(false)})});
 
 document.querySelectorAll('.faq-item>button').forEach(button=>button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));button.nextElementSibling.hidden=open}));
