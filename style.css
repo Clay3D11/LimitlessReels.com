@@ -75,3 +75,22 @@ dialog{max-width:calc(100% - 26px);padding:0;border:0;border-radius:20px;backgro
 @media(max-width:560px){.client-card:not(.client-next){grid-template-columns:1fr}.client-photo{min-height:0;aspect-ratio:1/1}.client-info{padding:24px 20px}.client-next{padding:60px 20px 26px}}
 @media(hover:none){.client-card:hover{transform:none}}
 #realtors .modal-close{background:var(--cream);color:var(--ink);box-shadow:0 6px 20px rgba(0,0,0,.35)}
+/* phones: compact client cards (small photo beside the info instead of a full-width photo) */
+@media(max-width:560px){
+  .clients-head{margin-bottom:26px}
+  .clients-grid{gap:12px}
+  .client-card:not(.client-next){grid-template-columns:96px minmax(0,1fr);align-items:stretch}
+  .client-photo{min-height:0;aspect-ratio:auto;border-radius:12px;margin:12px 0 12px 12px;overflow:hidden}
+  .client-info{gap:5px;padding:14px 14px 14px 14px}
+  .client-role{font-size:.56rem;letter-spacing:.12em}
+  .client-card strong{font-size:1.35rem}
+  .client-meta{font-size:.78rem;line-height:1.35}
+  .client-tags{gap:4px;margin:2px 0}
+  .client-tags span{padding:3px 8px;font-size:.64rem}
+  .client-tags span:nth-child(n+3){display:none}
+  .client-delivered{display:none}
+  .client-go{padding-top:2px;font-size:.82rem}
+  .client-next{grid-template-columns:44px minmax(0,1fr);align-items:center;column-gap:12px;row-gap:2px;padding:14px}
+  .client-next .client-plus{grid-row:span 3;width:44px;height:44px;font-size:1.4rem}
+  .client-next strong{font-size:1.1rem}
+}
