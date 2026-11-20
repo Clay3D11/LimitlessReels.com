@@ -1,4 +1,4 @@
-# LimitlessReels.com
+# LimitlessReels2.com
 
 A premium real-estate media agency storefront for realtors, teams, brokerages, developers, and luxury listings. This is a separate project; the original `LimitlessReels.com` project remains unchanged.
 
